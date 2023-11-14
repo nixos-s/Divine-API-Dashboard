@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "c9735434-42c8-4c25-8882-e088225d66b5",
+		"name": "Monitor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24776550"
+	},
+	"item": [
+		{
+			"name": "Astro AppInit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "appCurrentVersion",
+							"value": " 3.0",
+							"type": "text"
+						},
+						{
+							"key": "device_brand",
+							"value": " samsung",
+							"type": "text"
+						},
+						{
+							"key": "device_manufacture",
+							"value": " samsung",
+							"type": "text"
+						},
+						{
+							"key": "device_model",
+							"value": " SM-A135F",
+							"type": "text"
+						},
+						{
+							"key": "device_sdk_code",
+							"value": " 33",
+							"type": "text"
+						},
+						{
+							"key": "device_token",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "role_id",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://divine-partner.divinetalk.live/admin/v8/astroAppInit",
+					"protocol": "https",
+					"host": [
+						"divine-partner",
+						"divinetalk",
+						"live"
+					],
+					"path": [
+						"admin",
+						"v8",
+						"astroAppInit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Astro IntroPageDesc",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://divine-partner.divinetalk.live/admin/v8/getIntroPageDesc",
+					"protocol": "https",
+					"host": [
+						"divine-partner",
+						"divinetalk",
+						"live"
+					],
+					"path": [
+						"admin",
+						"v8",
+						"getIntroPageDesc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cust AppInit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"appCurrentVersion\": \"3.2.9\",\r\n  \"appInstanceId\": \"\",\r\n  \"device_brand\": \"samsung\",\r\n  \"device_manufacture\": \"samsung\",\r\n  \"device_model\": \"SM-A135F\",\r\n  \"device_sdk_code\": \"33\",\r\n  \"device_token\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://jarvis.divinetalk.live/api/v8/appInit",
+					"protocol": "https",
+					"host": [
+						"jarvis",
+						"divinetalk",
+						"live"
+					],
+					"path": [
+						"api",
+						"v8",
+						"appInit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cust IntroPageDesc",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://jarvis.divinetalk.live/api/v8/getIntroPageDesc",
+					"protocol": "https",
+					"host": [
+						"jarvis",
+						"divinetalk",
+						"live"
+					],
+					"path": [
+						"api",
+						"v8",
+						"getIntroPageDesc"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

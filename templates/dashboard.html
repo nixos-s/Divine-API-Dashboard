@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .api-container {
+            background-color: #fff;
+            margin: 20px;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .api-header {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .api-data {
+            margin-left: 20px;
+            overflow-x: auto;
+        }
+        .status-circle {
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        .green { background-color: green; }
+        .red { background-color: red; }
+        .highlight { color: #0056b3; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>API Status Dashboard</h1>
+    <div>
+        {% for api_name, api_status in api_statuses.items() %}
+            <div class="api-container">
+                <div class="api-header">{{ api_name }}</div>
+                <div class="api-data">
+                    <table>
+                        {% for key, value in api_status.items() %}
+                            <tr>
+                                <th>{{ key }}</th>
+                                <td>
+                                    {% if key == 'data' %}
+                                        <table>
+                                            {% for data_key, data_value in value.items() %}
+                                                <tr>
+                                                    <th>{{ data_key }}</th>
+                                                    <td>{{ data_value }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </table>
+                                    {% else %}
+                                        {% if key in ['message', 'status_code', 'success'] %}
+                                            <span class="highlight">{{ value }}</span>
+                                        {% else %}
+                                            {{ value }}
+                                        {% endif %}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    <div>
+                        <span class="status-circle {% if api_status['data']['status_code'] == 200 %}green{% else %}red{% endif %}"></span>
+                        Overall Status
+                    </div>
+                    <div>
+                        <span class="status-circle {% if api_status['data']['status_code'] == 200 %}green{% else %}red{% endif %}"></span>
+                        Status Code
+                    </div>
+                    <div>
+                        <span class="status-circle {% if api_status.get('response_time', 0) < 1.0 %}green{% else %}red{% endif %}"></span>
+                        Response Time
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
